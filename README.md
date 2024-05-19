@@ -14,7 +14,7 @@ To describe this project, _this is meant to create an integration between Asana 
 
 ![Screenshot (239)](https://github.com/7Aditya5/SpotDRAFT-asana-airtable-integration/assets/38333466/52fbbb72-771b-4b66-8a73-d5715e386e79)
 
-   Visit https://airtable.com/create/tokens to create personal access token (PAT) i.e, the Apikey and give scopes of data.records:write to Create, edit, and delete records4
+   Visit https://airtable.com/create/tokens to create personal access token (PAT) i.e, the Apikey and give scopes of data.records:write to Create, edit, and delete records.
 
 ![Screenshot (240)](https://github.com/7Aditya5/SpotDRAFT-asana-airtable-integration/assets/38333466/b5dce171-103c-4e78-9888-f6a3a193cc8a)
 
