@@ -1,0 +1,28 @@
+{
+  "name": "spotdraft",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/7Aditya5/SpotDRAFT-asana-airtable-integration.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/7Aditya5/SpotDRAFT-asana-airtable-integration/issues"
+  },
+  "homepage": "https://github.com/7Aditya5/SpotDRAFT-asana-airtable-integration#readme",
+  "dependencies": {
+    "@ngrok/ngrok": "^1.2.0",
+    "airtable": "^0.12.2",
+    "axios": "^1.6.8",
+    "crypto": "^1.0.1",
+    "express": "^4.19.2"
+  }
+}
