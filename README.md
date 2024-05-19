@@ -47,11 +47,11 @@ To describe this project, _this is meant to create an integration between Asana 
 
 ![image](https://github.com/7Aditya5/SpotDRAFT-asana-airtable-integration/assets/38333466/a76ea543-81b1-4c5e-83b6-e43589ca567d)
 
-9. Using these links of Asana docs, one can know how to use them:
+9. Using these links of Asana docs, one can know how to use the webhook creation:
     https://developers.asana.com/docs/webhooks-guide
     https://developers.asana.com/docs/quick-start
 
-10. To register own server with Asana for webhook, hit a post request to https://app.asana.com/api/1.0/webhooks with bearer token as PAT of Asana in headers of the request. Send the body as shown here in screenshot.
+10. To register own server (our node js server behind the ngrok public facing server) with Asana for webhook, hit a post request to https://app.asana.com/api/1.0/webhooks with bearer token as PAT of Asana in headers of the request. Send the body as shown here in screenshot.
 
 ![image](https://github.com/7Aditya5/SpotDRAFT-asana-airtable-integration/assets/38333466/4fbd45c6-fac2-467e-8071-f207e37aedbc)
 
