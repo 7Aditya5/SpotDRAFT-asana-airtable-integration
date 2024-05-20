@@ -55,7 +55,7 @@ To describe this project, _this is meant to create an integration between Asana 
 
 ![image](https://github.com/7Aditya5/SpotDRAFT-asana-airtable-integration/assets/38333466/4fbd45c6-fac2-467e-8071-f207e37aedbc)
 
-The body as in screenshot is written here. Use this exactly to make sure the webhook is registered in Asana server for events like task creation in Asana.
+The body as in screenshot is written here. Use this exactly in the same format to make sure the webhook is registered in Asana server for events like task creation in Asana.
 {
   "data": {
    "resource": "1207344194731447",
@@ -81,3 +81,75 @@ A sample request snippet is written below and can be used to make request using 
 11. Now that we have setup webhook with Asana, we can create tasks in Asana and the nodejs code will push them to Airtable to dedicated base table.
     Watch the video: https://www.youtube.com/watch?v=yu_ilbefNOY to see the task created in Asana is pushed into Airtable.
 
+
+<h2>Mapping of data from Asana to Airtable</h2>
+
+<table>
+   <tr>
+      <th>Asana</th>
+      <th>Airtable</th>
+   </tr>
+   <tr>
+    <td>data.gid</td>
+   <td>Task ID</td>
+   </tr>
+   <tr>
+    <td>data.name</td>
+   <td>Name</td>
+   </tr>
+   <tr>
+    <td>data.assignee.name</td>
+   <td>Assignee</td>
+   </tr>
+   <tr>
+    <td>data.due_on</td>
+   <td> Due Date </td>
+   </tr>
+   <tr>
+    <td>data.notes</td>
+   <td> Description </td>
+   </tr>
+</table>
+
+<h2> Body of the webhook cretion explained </h2>
+
+{<br>
+  "data": { <br>
+   "resource": "1207344194731447", <br>
+    "target": "https://6e94-45-117-205-53.ngrok-free.app/receiveWebhook", <br>
+    "filters": [ <br>
+      {
+        "resource_type": "task", <br>
+        "action": "added" <br>
+      } <br>
+    ]<br>
+  }<br>
+}<br>
+
+<table>
+   <tr>
+      <th>Body Element</th>
+      <th>Explanation</th>
+   </tr>
+   <tr>
+    <td>data</td>
+   <td>An object wrapper to send data through request body</td>
+   </tr>
+   <tr>
+    <td>resource</td>
+   <td>Resource id in Asana, here in the body is project id</td>
+   </tr>
+   <tr>
+    <td>target</td>
+   <td>(https://6e94-45-117-205-53.ngrok-free.app/receiveWebhook)
+   <br> https://6e94-45-117-205-53.ngrok-free.app/ --> ngrok url in front of my nodejs server for Asana to access it.
+   <br> /receiveWebhook --> endpoint in nodejs server to which Asana sends data after webhook creation.</td>
+   </tr>
+   <tr>
+    <td>filters</td>
+   <td> To specify different filters (https://developers.asana.com/docs/webhooks-guide#filtering)
+   <br> "resource_type": "task" --> resource type is on which the webhook gets triggered, i.e, it is on anything related to task.
+        <br>"action": "added" --> action specify what function or action in Asana is done on resource type, here it is **adding tasks**.
+   </td>
+   </tr>
+</table>
