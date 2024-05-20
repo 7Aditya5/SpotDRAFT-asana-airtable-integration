@@ -111,7 +111,7 @@ A sample request snippet is written below and can be used to make request using 
    </tr>
 </table>
 
-<h2> Body of the webhook cretion explained </h2>
+<h2> Body of the webhook creation explained </h2>
 
 {<br>
   "data": { <br>
