@@ -17,7 +17,9 @@ let secret = "";
 
 // Local endpoint for receiving events
 
-app.post("/receiveWebhook", (req, res) => {
+let events=[];
+
+app.post("/receiveWebhook", (req, res, next) => {
 
   if (req.headers["x-hook-secret"]) {
     //console.log("This is a new webhook");
@@ -47,30 +49,37 @@ app.post("/receiveWebhook", (req, res) => {
 
       if(req.body.events.length>0){
             const taskId = req.body.events[0]["resource"]["gid"];
-        let data_for_airtable = {};
-
-        getAsanaTask(taskId).then(task => {
-        try{
-          if (task) {
-           // console.log('Task details:', task.data);
-            data_for_airtable["taskID"] = task.data["gid"];
-            data_for_airtable["name"] = task.data["name"];
-            data_for_airtable["assignee"] = task.data["assignee"]["name"];
-            data_for_airtable["dueDate"] = task.data["due_on"];
-            data_for_airtable["description"] = task.data["notes"];
-          }
-          console.log(data_for_airtable);
-
-          setTimeout( () => {
-            dataToAirtable(data_for_airtable["taskID"],data_for_airtable["name"],data_for_airtable["assignee"],data_for_airtable["dueDate"],data_for_airtable["description"])
-        },20000);
-         
-        }catch(error){
-          console.error('Error:', error);
-        } 
-    });
-      }
       
+          console.log("events array>>>>>>>",events);
+              getAsanaTask(taskId).then(task => {
+                console.log("task>>>>>>>>",task)
+                let data_for_airtable = {};
+              try{
+                if (task) {
+                // console.log('Task details:', task.data);
+                  data_for_airtable["taskID"] = task.data["gid"];
+                  data_for_airtable["name"] = task.data["name"];
+                  data_for_airtable["assignee"] = task.data["assignee"]["name"];
+                  data_for_airtable["dueDate"] = task.data["due_on"];
+                  data_for_airtable["description"] = task.data["notes"];
+                }
+                
+            if(!events.includes(taskId)){
+              console.log("airtable data>>>>>>",data_for_airtable);
+              setTimeout( () => {
+                dataToAirtable(data_for_airtable["taskID"],data_for_airtable["name"],data_for_airtable["assignee"],data_for_airtable["dueDate"],data_for_airtable["description"])
+            },20000);
+            events.push(taskId);
+            console.log("events array after event loop>>>>>>>",events);
+            }
+               
+              }catch(error){
+                console.error('Error:', error);
+              } 
+          });
+               
+      }
+      console.log(">>reached here");
       res.sendStatus(200);
     }
   } else {
