@@ -41,7 +41,7 @@ To describe this project, _this is meant to create an integration between Asana 
 
 ![Screenshot (242)](https://github.com/7Aditya5/SpotDRAFT-asana-airtable-integration/assets/38333466/5222141a-24eb-4455-9a0a-1974925bcd07)
 
-7. Now the ngrok will be paired using the token and to run the nodejs app behind the public facing ngrok server execute command : NGROK_AUTHTOKEN=<Ngrok AUTHTOKEN> npm start.
+7. Now the ngrok will be paired using the token and to run the nodejs app behind the public facing ngrok server execute command : NGROK_AUTHTOKEN=<Ngrok_authtoken> npm start.
 
 8. After running the above command, the server will run and an url from ngrok will be provided like shown here.
 
